@@ -1,0 +1,4 @@
+Try out different examples on today's topics by your own on ruby console
+Develop Hangman Game using ruby
+            Number of chance : 5
+            Number of level : 5
