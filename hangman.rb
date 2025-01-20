@@ -10,11 +10,12 @@ words.each do |word|
 
   while chances > 0 && to_guess.include?('_')
     puts "\nEnter a character:"
-    c = gets.chomp
+    character = gets.chomp.strip.downcase # removing leading & trailing spaces, and downcasing character
 
-    if word.include?(c)
-      index = word.index(c)
-      to_guess[index] = c
+    if word.include?(character)
+      word.chars.each_with_index do |char, index|
+        to_guess[index] = char if char == character
+      end
       puts "Correct guess!"
     else
       chances -= 1
