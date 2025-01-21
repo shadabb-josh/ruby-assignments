@@ -1,0 +1,3 @@
+Assignment:
+1: Try out different examples on above topics by their own on ruby console
+2: Continue the previous assignment if they can use the today's concepts in it.
