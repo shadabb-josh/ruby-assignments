@@ -1,67 +1,40 @@
-module GameUtils
-  def self.display_level(level)
-    puts "LEVEL #{level}"
-  end
+words = ["word", "something", "apple", "watermelon", "grapes"]
+chances = 5
+level = 1
 
-  def self.display_current_word(to_guess)
-    puts "Current word: #{to_guess}"
-  end
+words.each do |word|
+  to_guess = "_" * word.length
+  chances = 5
+  puts "LEVEL #{level}"
+  puts "Guess the word: #{to_guess}"
 
-  def self.display_chances(chances)
-    puts "Chances left: #{chances}"
-  end
-end
+  while chances > 0 && to_guess.include?('_')
+    puts "\nEnter a character:"
+    c = gets.chomp
 
-class WordGuessingGame
-  attr_accessor :words, :chances, :level
-
-  def initialize(words)
-    @words = words
-    @chances = 5
-    @level = 1
-  end
-
-  def start
-    words.each do |word|
-      to_guess = "_" * word.length
-      game_over = false
-
-      GameUtils.display_level(level)
-      puts "Guess the word: #{to_guess}"
-
-      while chances > 0 && to_guess.include?('_')
-        puts "\nEnter a character:"
-        character = gets.chomp.strip.downcase # Removing leading/trailing spaces and downcasing character
-
-        if word.include?(character)
-          word.chars.each_with_index do |char, index|
-            to_guess[index] = char if char == character
-          end
-          puts "Correct guess!"
-        else
-          self.chances -= 1
-          GameUtils.display_chances(chances)
-          puts "Wrong guess!"
-        end
-
-        GameUtils.display_current_word(to_guess)
-      end
-
-      if to_guess == word
-        puts "Congratulations! You guessed the word: #{word}"
-        self.level += 1
+    if c.length == 1 and c.length > 0
+      if word.include?(c)
+        index = word.index(c)
+        to_guess[index] = c
+        puts "Correct guess!"
       else
-        puts "Game over! The correct word was: #{word}"
-        self.level -= 1 if level > 1
-        game_over = true
+        chances -= 1
+        puts "Wrong guess! Chances left: #{chances}"
       end
-
-      break if game_over
-
-      puts "-" * 30
+        puts "Current word: #{to_guess}"
+    else
+      puts "please enter one character only"
     end
+  
   end
-end
 
-game = WordGuessingGame.new(["word", "something", "apple", "watermelon", "grapes"])
-game.start
+  if to_guess == word
+    puts "Congratulations! You guessed the word: #{word}"
+    level += 1
+  else
+    puts "Game over! The correct word was: #{word}"
+    level -= 1 if level > 1
+  end
+  
+  puts "-" * 30 
+end
