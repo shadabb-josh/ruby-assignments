@@ -32,7 +32,7 @@ if ip =~ /^\d{1,3}(\.\d{1,3}){3}$/
 
   # Determine the IP class using a single condition with ranges
   case first_octet
-  when 1..126
+  when 1..127
     # Loopback address means, address used to test the network functionality on local machine
     puts first_octet == 127 ? 'Class A (Loopback Address)' : 'Class A'
   when 128..191
