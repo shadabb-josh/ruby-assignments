@@ -50,3 +50,4 @@ $countries_data = {
   "New Zealand" => ["New Zealand", 4822233, 206000000000, 12, 10000, "Developed"],
   "Slovakia" => ["Slovakia", 5456362, 105000000000, 8, 30000, "Developed"]
 }.freeze
+

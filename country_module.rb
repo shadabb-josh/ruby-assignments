@@ -1,7 +1,10 @@
+$DEVELOPING = 'Developing'
+$DEVELOPED = 'Developed'
+
 module Check_country
   
   def will_country_get_loan?(gross_domestic_production, state_of_country)
-    if gross_domestic_production < 500_000 && state_of_country == 'Developing'
+    if gross_domestic_production < 500_000 && state_of_country == $DEVELOPING
       "Eligible for LOAN from International Monetary Fund or World Bank"
     else
       "Not elegible for LOAN"
@@ -9,7 +12,7 @@ module Check_country
   end
 
   def will_country_get_seat_UN?(army_strength, state_of_country)
-    if army_strength > 100_000 && state_of_country == 'Developed'
+    if army_strength > 100_000 && state_of_country == $DEVELOPED
       "Eligible for United Nation Seat"
     else
       "Not eligible for United Nation Seat"
