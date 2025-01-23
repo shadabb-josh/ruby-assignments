@@ -1,20 +1,22 @@
-words = ["word", "something", "apple", "watermelon", "grapes"]
+words = ["sees","word", "something", "apple", "watermelon", "grapes"]
 chances = 5
-level = 1
 
 words.each do |word|
   to_guess = "_" * word.length
   chances = 5
-  puts "LEVEL #{level}"
+
   puts "Guess the word: #{to_guess}"
 
   while chances > 0 && to_guess.include?('_')
     puts "\nEnter a character:"
-    character = gets.chomp.strip.downcase # removing leading & trailing spaces, and downcasing character
+    c = gets.chomp
 
-    if word.include?(character)
+    if word.include?(c)
       word.chars.each_with_index do |char, index|
-        to_guess[index] = char if char == character
+        print char, index
+        if char == c
+          to_guess[index] = c
+        end
       end
       puts "Correct guess!"
     else
@@ -27,11 +29,9 @@ words.each do |word|
 
   if to_guess == word
     puts "Congratulations! You guessed the word: #{word}"
-    level += 1
   else
     puts "Game over! The correct word was: #{word}"
-    level -= 1 if level > 1
   end
 
-  puts "-" * 30 
+  puts "-" * 30  
 end
